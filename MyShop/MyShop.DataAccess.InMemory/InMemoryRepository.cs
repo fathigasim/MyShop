@@ -1,4 +1,5 @@
-﻿using MyShop.Core.Models;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyShop.DataAccess.InMemory
 {
-   public class InMemoryRepository <T> where T : BaseEntity
+   public class InMemoryRepository <T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -25,11 +26,14 @@ namespace MyShop.DataAccess.InMemory
             }
         }
         //save as generics type
-        public void Commit() {
+        public void Commit()
+        {
             cache[ClassName] = items;
         }
         //insert as generic type
+        //to test whether interface id working fine i am creating new mothed purely for test
 
+       // public void DoSomething() { }
         public void Insert(T t) {
 
             items.Add(t);
