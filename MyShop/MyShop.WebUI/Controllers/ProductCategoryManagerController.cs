@@ -82,7 +82,7 @@ namespace MyShop.WebUI.Controllers
             }
             else
             {
-                if (!ModelState.IsValid == null)
+                if (!ModelState.IsValid )
                 {
                     return View(productcategory);
                 }

@@ -75,10 +75,11 @@ namespace MyShop.WebUI.Controllers
 
         //Editing
         public ActionResult Edit(string Id) {
-            Product product = context.Find(Id);
-            if (product == null)
+            //ProductManagerViewModel viewModel = new ProductManagerViewModel();
+            Product productToUpdate = context.Find(Id);
+            if (productToUpdate == null)
             {
-             return   HttpNotFound();
+              return  HttpNotFound();
             }
             else {
                 ProductManagerViewModel viewModel = new ProductManagerViewModel();
@@ -100,12 +101,11 @@ namespace MyShop.WebUI.Controllers
             }
             else
             {
-                if (!ModelState.IsValid == null)
+                if (!ModelState.IsValid )
                 {
                     return View(product);
                 }
-                else
-                {
+               
 
 
 
@@ -117,7 +117,7 @@ namespace MyShop.WebUI.Controllers
                     context.Commit();
 
                     return RedirectToAction("Index");
-                }
+                
             }
             }
         //delete method
