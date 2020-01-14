@@ -41,6 +41,8 @@ namespace MyShop.WebUI.Controllers
             List<Product> products = context.Collection().ToList();
             return View(products);
         }
+
+       
         //create product
         public ActionResult Create()
         {
@@ -80,7 +82,7 @@ namespace MyShop.WebUI.Controllers
 
         //Editing
         public ActionResult Edit(string Id) {
-            //ProductManagerViewModel viewModel = new ProductManagerViewModel();
+            
             Product productToUpdate = context.Find(Id);
             if (productToUpdate == null)
             {
@@ -114,7 +116,7 @@ namespace MyShop.WebUI.Controllers
                 if (file != null)
                 {
                     productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//ProductImages//" + productToEdit.Image));
+                    file.SaveAs(Server.MapPath("~/Content/ProductImages/" + productToEdit.Image));
                 }
 
 
