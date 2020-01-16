@@ -81,6 +81,7 @@ namespace MyShop.Services
                     BasketId = basket.Id,
                     ProductId = productId,
                     Quantity = 1
+                    //
                 };
                 basket.BasketItems.Add(item);
             }
@@ -148,5 +149,7 @@ namespace MyShop.Services
                 return model;
             }
         }
+
+        public void dosomething() { }
     }
 }
