@@ -22,7 +22,7 @@ namespace MyShop.Services
             this.basketContext = BasketContext;
             this.productContext = ProductContext;
         }
-
+        //get basket or create if it doesn't exist
         private Basket GetBasket(HttpContextBase httpContext, bool createIfNull)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(basketSessionName);
@@ -129,8 +129,8 @@ namespace MyShop.Services
         }
 
         public BasketSummeryViewModel GetBasketSummary(HttpContextBase httpContext) {
-
-            Basket basket = new Basket();
+            Basket basket = GetBasket(httpContext,false);
+            //Basket basket = new Basket();
             BasketSummeryViewModel model = new BasketSummeryViewModel(0,0);
             if (basket != null)
             {
@@ -138,7 +138,7 @@ namespace MyShop.Services
                                     select item.Quantity).Sum();
 
                 decimal? basketTotal = (from item in basket.BasketItems
-                                        join p in productContext.Collection() on item.Id equals p.Id
+                                        join p in productContext.Collection() on item.ProductId equals p.Id
                                         select item.Quantity * p.Price).Sum();
 
                 model.BasketCount = basketCount ?? 0;
