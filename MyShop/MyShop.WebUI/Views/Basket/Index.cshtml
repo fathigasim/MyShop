@@ -36,6 +36,8 @@
         <td>
            
             <a href="@Url.Action("RemoveFromBasket","Basket",new  {Id=item.Id })" class="btn btn-danger" >Delete</a>
+            <a href="@Url.Action("ClearBasket","Basket",new  {Id=item.Id })" class="btn btn-danger">Clear Basket</a>
+            
         </td>
     </tr>
 }
@@ -43,6 +45,7 @@
 
         <td colspan="4" class="text-align:right"><strong>Basket Total</strong></td>
         <td >@string.Format("{0 :c}",(from p in Model select p.Price*p.Quantity ).Sum())</td> 
+        <td><a href="@Url.Action("CheckOut","Basket")">CheckOut</a></td>
     </tr>
 
 </table>
