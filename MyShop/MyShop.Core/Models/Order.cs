@@ -20,7 +20,7 @@ namespace MyShop.Core.Models
         public string State { get; set; }
         public string  ZipCode { get; set; }
         public string OrderStatus { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
 
     }
 }
