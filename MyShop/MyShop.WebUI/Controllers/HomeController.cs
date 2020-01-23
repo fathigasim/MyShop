@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MyShop.WebUI.Controllers
 {
+    
     public class HomeController : Controller
     {
         IRepository<Product> context;

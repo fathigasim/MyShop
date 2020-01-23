@@ -14,7 +14,7 @@ using MyShop.Core.Contracts;
 
 namespace MyShop.WebUI.Controllers
 {
-    [Authorize]
+  [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
